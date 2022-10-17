@@ -5,7 +5,6 @@
 
 #Imports
 import pandas as pd
-import numpy as np
 import plotly.express as px
 import streamlit as st
 import cufflinks as cf
@@ -13,13 +12,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 #Setttings
 
-
-#Carga de datos
-st.set_page_config(page_title='Reporte Diario ADIS',
-                   layout='wide')
-df = pd.read_excel(r'D:\Users\ssaenz\Mis documentos\Sofia\datasets\ADIS\Book1.xlsx')
-df = df.replace(r"_x000D_\n", ' ', regex=True)
-
+#Data Prepare
+## data_prepare.py se encarga de la preparacion, luego solo cargamos desde el url de git
+df = pd.read_csv('https://raw.githubusercontent.com/SSaenzDev/streamlit_prueba/main/dataframe_adis.csv')
 
 #Filtros
 estado_ot = st.sidebar.multiselect(
