@@ -3,3 +3,4 @@ streamlit==1.13.0
 plotly==5.10.0
 plotly-express==0.4.1
 cufflinks==0.17.3
+shareplum==0.5.1
