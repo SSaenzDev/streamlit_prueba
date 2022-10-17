@@ -10,11 +10,26 @@ import streamlit as st
 import cufflinks as cf
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-#Setttings
+from io import StringIO
+from shareplum import Site
+from shareplum import Office365
+from shareplum.site import Version
 
-#Data Prepare
-## data_prepare.py se encarga de la preparacion, luego solo cargamos desde el url de git
-df = pd.read_csv('https://raw.githubusercontent.com/SSaenzDev/streamlit_prueba/main/dataframe_adis.csv')
+#Setttings API
+authcookie = Office365('https://avicolasofia.sharepoint.com/', 
+                       username='sebastian.saenz@mamayatech.com', password='Avicola2022').GetCookies()
+site = Site('https://avicolasofia.sharepoint.com/sites/SOLUCIONESBIYANALITICA/',version=Version.v365, authcookie=authcookie)
+folder = site.Folder('Documentos%20compartidos/ADIS')
+df_raw = folder.get_file('dataframe_adis.csv')
+type(df_raw)
+
+## Bytes to CSV
+
+s=str(df_raw,'utf-8')
+data = StringIO(s) 
+df=pd.read_csv(data)
+
+
 
 #Filtros
 estado_ot = st.sidebar.multiselect(
