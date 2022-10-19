@@ -74,6 +74,7 @@ df_sigla = df_sigla.rename(columns={'index':'SIGLAS', 'SIGLA_SOLICITANTE':''})
 
 
 #Armado
+st.set_page_config(layout="wide")
 st.title('Reporte Diario ADIS')
 st.metric(label='TOTAL_OT', value= TOTAL_OT )
 st.header('Tabla de OT')
