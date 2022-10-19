@@ -1,4 +1,6 @@
 ###Links
+#https://shareplum.readthedocs.io/en/latest/
+#https://shareplum.readthedocs.io/en/latest/files.html#id1
 #https://coderzcolumn.com/tutorials/data-science/cufflinks-how-to-create-plotly-charts-from-pandas-dataframe-with-one-line-of-code#2
 #https://coderzcolumn.com/tutorials/data-science/build-dashboard-using-streamlit-and-cufflinks
 #https://coderzcolumn.com/tutorials/data-science/cufflinks-how-to-create-plotly-charts-from-pandas-dataframe-with-one-line-of-code#2
@@ -15,19 +17,19 @@ from shareplum import Site
 from shareplum import Office365
 from shareplum.site import Version
 
+
 #Setttings API
 authcookie = Office365('https://avicolasofia.sharepoint.com/', 
                        username='sebastian.saenz@mamayatech.com', password='Avicola2022').GetCookies()
 site = Site('https://avicolasofia.sharepoint.com/sites/SOLUCIONESBIYANALITICA/',version=Version.v365, authcookie=authcookie)
 folder = site.Folder('Documentos%20compartidos/ADIS')
-df_raw = folder.get_file('dataframe_adis.csv')
-type(df_raw)
+df_raw = folder.get_file('TABLA_OTS_APP_streamlit.txt')
+
 
 ## Bytes to CSV
-
 s=str(df_raw,'utf-8')
 data = StringIO(s) 
-df=pd.read_csv(data)
+df=pd.read_csv(data, sep=';', header=0)
 
 
 
@@ -41,8 +43,6 @@ df_selection = df.query(
     'ESTADO_OT == @estado_ot'
     
 )
-
-
 
 #Datos
 ACTIVOS = df[df['ACTIVO_ESTADO']==1]
