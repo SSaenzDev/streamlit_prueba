@@ -17,7 +17,7 @@ from shareplum import Site
 from shareplum import Office365
 from shareplum.site import Version
 
-
+st.set_page_config(layout="wide")
 #Setttings API
 authcookie = Office365('https://avicolasofia.sharepoint.com/', 
                        username='sebastian.saenz@mamayatech.com', password='Avicola2022').GetCookies()
