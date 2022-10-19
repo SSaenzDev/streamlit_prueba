@@ -82,7 +82,7 @@ st.dataframe(df_selection)
 
 bar_fig = px.bar(
         df_sigla,
-        x='index',
+        x='',
         y="SIGLA_SOLICITANTE",
         title="<b>OT por Sigla Solicitante</b>",
         color_discrete_sequence=["#0083B8"] * len(df_sigla),
@@ -90,7 +90,7 @@ bar_fig = px.bar(
 )
 
 
-pie_fig = df_estados.iplot(kind="pie", labels="index", values="ESTADO_OT",
+pie_fig = df_estados.iplot(kind="pie", labels="ESTADOS", values="ESTADO_OT",
                          title="<b>OT por Estados<b>",
                          asFigure=True,
                         hole=0.4)
