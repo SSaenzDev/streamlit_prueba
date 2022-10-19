@@ -54,9 +54,14 @@ SOLICITANTE = ACTIVOS['SIGLA_SOLICITANTE']
 
 df_estados = pd.DataFrame(OT_ESTADOS.value_counts())
 df_estados = df_estados.reset_index()
+df_estados = df_estados.rename(columns={'index':'ESTADOS'})
+
 
 df_sigla = pd.DataFrame(SOLICITANTE.value_counts())
 df_sigla = df_sigla.reset_index()
+df_sigla = df_sigla.rename(columns={'index':'SIGLAS', 'SIGLA_SOLICITANTE':''})
+
+
 
 #Graficos
 # plt.pie(OT_ESTADOS)
