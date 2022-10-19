@@ -82,8 +82,8 @@ st.dataframe(df_selection)
 
 bar_fig = px.bar(
         df_sigla,
-        x='',
-        y="SIGLA_SOLICITANTE",
+        x='SIGLAS',
+        y='',
         title="<b>OT por Sigla Solicitante</b>",
         color_discrete_sequence=["#0083B8"] * len(df_sigla),
         template="plotly_white"
